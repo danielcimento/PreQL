@@ -1,15 +1,16 @@
 package model.parse
 
-import fastparse._, MultiLineWhitespace._
-
-import model.statements.CreateTableStatement
+import fastparse._
+import MultiLineWhitespace._
+import model.statements.{CreateTableStatement, SQLStatement}
 import model.statements.TableDefinitions._
-
 import DataTypeParser._
 import IdentifierParser._
 
 object CreateTableParser {
-  def createTable[_: P] = P(IgnoreCase("create") ~ tableScope.!.? ~ IgnoreCase("table") ~ identifier.! ~ tableElementList ~ tableCommitAction.?).map(CreateTableStatement.tupled)
+  def createTable[_: P] =
+    P(IgnoreCase("create") ~ tableScope.!.? ~ IgnoreCase("table") ~ identifier.! ~ tableElementList ~ tableCommitAction.?)
+      .map(CreateTableStatement.tupled(_).asInstanceOf[SQLStatement])
 
   def tableScope[_: P] = P(("GLOBAL" | "LOCAL") ~ "TEMPORARY")
 

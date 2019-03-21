@@ -2,7 +2,7 @@ package model.parse
 
 import fastparse._
 import MultiLineWhitespace._
-import model.statements._
+import model._
 
 object DataTypeParser {
   def dataType[_: P] = P(int | varchar | char)

@@ -1,3 +1,3 @@
 package model.errors
 
-class TableAlreadyExistsException(tableName: String) extends RuntimeException(s"Table already exists with the name $tableName.")
+class TableAlreadyExistsException(schemaName: String, tableName: String) extends RuntimeException(s"Table already exists in the schema $schemaName with the name $tableName.")

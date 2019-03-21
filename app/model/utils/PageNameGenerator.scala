@@ -7,7 +7,7 @@ object PageNameGenerator {
 
   // TODO: Ensure no duplicates
   def newPageName: String = {
-    val newPage: String = s"${rng.nextInt(Math.pow(2, 32).toInt)}"
+    val newPage: String = Integer.toString(rng.nextInt(Math.pow(2, 32).toInt), 16)
 
     newPage
   }
