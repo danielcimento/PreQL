@@ -1,4 +1,4 @@
-package model.statements
+package model
 
 trait DataType {
   // Size of the data type in bytes
