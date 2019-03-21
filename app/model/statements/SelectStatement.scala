@@ -1,11 +1,17 @@
 package model.statements
 
 import QueryDefinitions._
+import model.connection.{ErrorChannel, OutputChannel}
+import model.entities.Database
 
-case class SelectStatement(setQuantifier: Option[SetQuantifier], selectList: SelectList, tableExpression: TableExpression) extends SQLStatement
+case class SelectStatement(setQuantifier: Option[SetQuantifier], selectList: SelectList, tableExpression: TableExpression) extends SQLStatement {
+  override def execute(database: Database)(implicit oc: OutputChannel, ec: ErrorChannel): Database = {
+    // TODO: Implement selections (probably will be complex)
+    ???
+  }
+}
 
 object SelectDefinitions {}
-
 
 object QueryDefinitions {
   trait SetQuantifier
